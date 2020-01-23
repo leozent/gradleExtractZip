@@ -1,0 +1,16 @@
+
+apply plugin: 'groovy'
+
+group 'de.example'
+version '1.0.0'
+
+task extractZip(dependsOn: clean){
+    doLast{
+        copy {
+            FileTree updateZip = zipTree(file("$projectDir/UmlauteInside.zip"))
+            from updateZip
+            into file("$buildDir/extractedZipfile")
+        }
+    }
+}
+
